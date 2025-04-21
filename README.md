@@ -26,11 +26,6 @@ This project showcases a data warehousing solution for a banking OLTP system usi
 - Created cubes to support fast analytics.
 - Built measures, KPIs, and hierarchies.
 
-## 📊 Example Reports
-- Deposits by Region
-- Loans by Type
-- Customer Activity over Time
-
 ---
 
 ## 👨‍💻 Author
