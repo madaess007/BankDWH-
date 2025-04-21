@@ -1,0 +1,1525 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/11/2025 8:01:01 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-RSBN11D"
+  DTS:CreatorName="DESKTOP-RSBN11D\Pc Shop"
+  DTS:DTSID="{63164243-64F0-4511-A3D7-0AC84497944C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{E1C99DBE-B047-4D50-8DBC-B046D5644483}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CDF_Fact_Transaction"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{332FD30F-D576-4825-AB41-80DAF700B02F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CDF_Fact_Transaction"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Fact_Transaction_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[transactions_ATM_Account]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT *
+FROM [Union_Bank].[dbo].[transactions_ATM_Account]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{A1EBC6F8-DE09-4E88-A4E7-A9047AC95F36}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.Union_Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionId]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionId]"
+                      name="TransactionId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionTypeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeId]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionTypeId]"
+                      name="TransactionTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                      name="Amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionDate]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionDate]"
+                      name="TransactionDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Account Number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[Account Number]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Account Number]"
+                      name="Account Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[ATM ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[ATM ID]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[ATM ID]"
+                      name="ATM ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionId]"
+                      dataType="i8"
+                      name="TransactionId" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeId]"
+                      dataType="i4"
+                      name="TransactionTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      dataType="cy"
+                      name="Amount" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionDate]"
+                      dataType="dbDate"
+                      name="TransactionDate" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[Account Number]"
+                      dataType="i4"
+                      name="Account Number" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].ExternalColumns[ATM ID]"
+                      dataType="i4"
+                      name="ATM ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[TransactionId]"
+                      dataType="i8"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[TransactionId]"
+                      name="TransactionId" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[TransactionTypeId]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[TransactionTypeId]"
+                      name="TransactionTypeId" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      dataType="cy"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      name="Amount" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[TransactionDate]"
+                      dataType="dbDate"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[TransactionDate]"
+                      name="TransactionDate" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[Account Number]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[Account Number]"
+                      name="Account Number" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[ATM ID]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[ATM ID]"
+                      name="ATM ID" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CDF_Fact_Transaction\Insert_filter"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Insert_filter"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Fact_Transactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Fact_Transactions]) [refTable]
+where [refTable].[TransactionBK] = ? and [refTable].[Amount] = ? and [refTable].[DateID_FK] = ? and [refTable].[CustomerID_FK] = ? and [refTable].[TrTypeID_FK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateID_FK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerID_FK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TransactionBK" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TrTypeID_FK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Amount" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionId]};#{Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Amount]};#{Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Match Output].Columns[DateSK]};#{Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Match Output].Columns[Cus_PK_SK]};#{Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Match Output].Columns[TrTypeID_PK_SK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CDF_Fact_Transaction\Insert_filter.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input].Columns[TrTypeID_PK_SK]"
+                      cachedDataType="i4"
+                      cachedName="TrTypeID_PK_SK"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Match Output].Columns[TrTypeID_PK_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TrTypeID_FK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input].Columns[Cus_PK_SK]"
+                      cachedDataType="i4"
+                      cachedName="Cus_PK_SK"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Match Output].Columns[Cus_PK_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerID_FK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input].Columns[TransactionId]"
+                      cachedDataType="i8"
+                      cachedName="TransactionId"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TransactionBK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input].Columns[DateSK]"
+                      cachedDataType="i4"
+                      cachedName="DateSK"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Match Output].Columns[DateSK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">DateID_FK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input].Columns[Amount]"
+                      cachedDataType="cy"
+                      cachedName="Amount"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Amount]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Amount</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[DateID_FK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[DateID_FK]"
+                      name="DateID_FK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateID_FK</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[CustomerID_FK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[CustomerID_FK]"
+                      name="CustomerID_FK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerID_FK</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[TransactionBK]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[TransactionBK]"
+                      name="TransactionBK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TransactionBK</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[TrTypeID_FK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[TrTypeID_FK]"
+                      name="TrTypeID_FK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TrTypeID_FK</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[Amount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Match Output].Columns[Amount]"
+                      name="Amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Amount</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CDF_Fact_Transaction\LKP_Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Cus_PK_SK,AccNo_BK
+FROM Dim_Customer 
+where Is_Current=1 and SSC=1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Cus_PK_SK,AccNo_BK
+FROM Dim_Customer 
+where Is_Current=1 and SSC=1) [refTable]
+where [refTable].[AccNo_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Cus_PK_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AccNo_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Account Number]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CDF_Fact_Transaction\LKP_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CDF_Fact_Transaction\LKP_Customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Customer.Inputs[Lookup Input].Columns[Account Number]"
+                      cachedDataType="i4"
+                      cachedName="Account Number"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Account Number]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AccNo_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Match Output].Columns[Cus_PK_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Match Output].Columns[Cus_PK_SK]"
+                      name="Cus_PK_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Cus_PK_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CDF_Fact_Transaction\LKP_Date"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_Date"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DateSK,Date
+FROM DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT DateSK,Date
+FROM DimDate) [refTable]
+where [refTable].[Date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionDate]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CDF_Fact_Transaction\LKP_Date.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CDF_Fact_Transaction\LKP_Date.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Date.Inputs[Lookup Input].Columns[TransactionDate]"
+                      cachedDataType="dbDate"
+                      cachedName="TransactionDate"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionDate]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Match Output].Columns[DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Match Output].Columns[DateSK]"
+                      name="DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_Date.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CDF_Fact_Transaction\LKP_TrType"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_TrType"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TrTypeID_PK_SK,TrTypeID_BK
+FROM Dim_TrType
+WHERE Is_Current=1 and SSC=1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT TrTypeID_PK_SK,TrTypeID_BK
+FROM Dim_TrType
+WHERE Is_Current=1 and SSC=1) [refTable]
+where [refTable].[TrTypeID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TrTypeID_PK_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TrTypeID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionTypeId]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CDF_Fact_Transaction\LKP_TrType.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CDF_Fact_Transaction\LKP_TrType.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_TrType.Inputs[Lookup Input].Columns[TransactionTypeId]"
+                      cachedDataType="i4"
+                      cachedName="TransactionTypeId"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionTypeId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TrTypeID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_TrType.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Match Output].Columns[TrTypeID_PK_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Match Output].Columns[TrTypeID_PK_SK]"
+                      name="TrTypeID_PK_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TrTypeID_PK_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_TrType.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\LKP_TrType.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CDF_Fact_Transaction\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Transactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CDF_Fact_Transaction\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Amount]"
+                      cachedDataType="cy"
+                      cachedName="Amount"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[Amount]" />
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateSK]"
+                      cachedDataType="i4"
+                      cachedName="DateSK"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateID_FK]"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Match Output].Columns[DateSK]" />
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cus_PK_SK]"
+                      cachedDataType="i4"
+                      cachedName="Cus_PK_SK"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID_FK]"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Match Output].Columns[Cus_PK_SK]" />
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TrTypeID_PK_SK]"
+                      cachedDataType="i4"
+                      cachedName="TrTypeID_PK_SK"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TrTypeID_FK]"
+                      lineageId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Match Output].Columns[TrTypeID_PK_SK]" />
+                    <inputColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TransactionId]"
+                      cachedDataType="i8"
+                      cachedName="TransactionId"
+                      externalMetadataColumnId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionBK]"
+                      lineageId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output].Columns[TransactionId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateID_FK]"
+                      dataType="i4"
+                      name="DateID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID_FK]"
+                      dataType="i4"
+                      name="CustomerID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TrTypeID_FK]"
+                      dataType="i4"
+                      name="TrTypeID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      dataType="cy"
+                      name="Amount" />
+                    <externalMetadataColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionBK]"
+                      dataType="i8"
+                      name="TransactionBK" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CDF_Fact_Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CDF_Fact_Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CDF_Fact_Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CDF_Fact_Transaction.Paths[Lookup Match Output]"
+              endId="Package\CDF_Fact_Transaction\LKP_Customer.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\CDF_Fact_Transaction\LKP_Date.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\CDF_Fact_Transaction.Paths[Lookup Match Output1]"
+              endId="Package\CDF_Fact_Transaction\LKP_TrType.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\CDF_Fact_Transaction\LKP_Customer.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\CDF_Fact_Transaction.Paths[Lookup Match Output2]"
+              endId="Package\CDF_Fact_Transaction\Insert_filter.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\CDF_Fact_Transaction\LKP_TrType.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\CDF_Fact_Transaction.Paths[Lookup No Match Output]"
+              endId="Package\CDF_Fact_Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\CDF_Fact_Transaction\Insert_filter.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\CDF_Fact_Transaction.Paths[OLE DB Source Output]"
+              endId="Package\CDF_Fact_Transaction\LKP_Date.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\CDF_Fact_Transaction\Fact_Transaction_Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\CDF_Fact_Transaction"
+          TopLeft="157.857143193179,129.99999988605" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CDF_Fact_Transaction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\CDF_Fact_Transaction\LKP_Customer"
+          TopLeft="389.999994188547,309.99999538064" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\CDF_Fact_Transaction\LKP_TrType"
+          TopLeft="183.999997258186,258.999996140599" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\CDF_Fact_Transaction\OLE DB Destination"
+          TopLeft="412.42856615873,437.11763899018" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\CDF_Fact_Transaction\LKP_Date"
+          TopLeft="352.99999473989,196.999997064471" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\CDF_Fact_Transaction\Fact_Transaction_Source"
+          TopLeft="268.999995991588,66.9999990016222" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\CDF_Fact_Transaction\Insert_filter"
+          TopLeft="198.999996183174,415.941170776643" />
+        <EdgeLayout
+          Id="Package\CDF_Fact_Transaction.Paths[OLE DB Source Output]"
+          TopLeft="367.399995991588,108.599999001622">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.5999987483024,88.399998062849"
+              Start="0,0"
+              End="47.5999987483024,80.899998062849">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1999990314245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.1999990314245"
+                    Point2="0,44.1999990314245"
+                    Point3="4,44.1999990314245" />
+                  <mssgle:LineSegment
+                    End="43.5999987483024,44.1999990314245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5999987483024,44.1999990314245"
+                    Point2="47.5999987483024,44.1999990314245"
+                    Point3="47.5999987483024,48.1999990314245" />
+                  <mssgle:LineSegment
+                    End="47.5999987483024,80.899998062849" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CDF_Fact_Transaction.Paths[Lookup No Match Output]"
+          TopLeft="332.599996183174,436.741170776643">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.8285699755563,21.1764682135371"
+              Start="0,0"
+              End="72.3285699755563,21.1764682135371">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="35.9142849877782,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.9142849877782,0"
+                    Point2="39.9142849877782,0"
+                    Point3="39.9142849877782,4" />
+                  <mssgle:LineSegment
+                    End="39.9142849877782,17.1764682135371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.9142849877782,17.1764682135371"
+                    Point2="39.9142849877782,21.1764682135371"
+                    Point3="43.9142849877782,21.1764682135371" />
+                  <mssgle:LineSegment
+                    End="72.3285699755563,21.1764682135371" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.8921017309718,-17.609375,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CDF_Fact_Transaction.Paths[Lookup Match Output2]"
+          TopLeft="251.599997258186,300.599996140599">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.1999989249881,115.341174636044"
+              Start="0,0"
+              End="14.1999989249881,107.841174636044">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.6705873180222" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.6705873180222"
+                    Point2="0,57.6705873180222"
+                    Point3="4,57.6705873180222" />
+                  <mssgle:LineSegment
+                    End="10.1999989249881,57.6705873180222" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.1999989249881,57.6705873180222"
+                    Point2="14.1999989249881,57.6705873180222"
+                    Point3="14.1999989249881,61.6705873180222" />
+                  <mssgle:LineSegment
+                    End="14.1999989249881,107.841174636044" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-41.091387256256,62.6705873180222,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CDF_Fact_Transaction.Paths[Lookup Match Output1]"
+          TopLeft="389.999994188547,330.79999538064">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.7999969303608,-50.9999992400408"
+              Start="0,0"
+              End="-63.2999969303608,-50.9999992400408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-31.3999984651804,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.3999984651804,0"
+                    Point2="-35.3999984651804,0"
+                    Point3="-35.3999984651804,-4" />
+                  <mssgle:LineSegment
+                    End="-35.3999984651804,-46.9999992400408" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.3999984651804,-46.9999992400408"
+                    Point2="-35.3999984651804,-50.9999992400408"
+                    Point3="-39.3999984651804,-50.9999992400408" />
+                  <mssgle:LineSegment
+                    End="-63.2999969303608,-50.9999992400408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-83.5913851839304,1,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CDF_Fact_Transaction.Paths[Lookup Match Output]"
+          TopLeft="414.99999473989,238.599997064471">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.199999448657,71.3999983161689"
+              Start="0,0"
+              End="48.199999448657,63.8999983161689">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6999991580845" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6999991580845"
+                    Point2="0,35.6999991580845"
+                    Point3="4,35.6999991580845" />
+                  <mssgle:LineSegment
+                    End="44.199999448657,35.6999991580845" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.199999448657,35.6999991580845"
+                    Point2="48.199999448657,35.6999991580845"
+                    Point3="48.199999448657,39.6999991580845" />
+                  <mssgle:LineSegment
+                    End="48.199999448657,63.8999983161689" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.0913869944215,40.6999991580845,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CDF_Fact_Transaction\LKP_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CDF_Fact_Transaction\LKP_TrType">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CDF_Fact_Transaction\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CDF_Fact_Transaction\LKP_Date">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CDF_Fact_Transaction\Fact_Transaction_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CDF_Fact_Transaction\Insert_filter">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Fact_Transactions]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-RSBN11D_SQLEXPRESS.BankITI"
+  DTS:DTSID="{D626D9A3-A44C-4834-832B-B0511CD5E916}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-RSBN11D\SQLEXPRESS;Initial Catalog=BankITI;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-BankDWH_SSIS-{D626D9A3-A44C-4834-832B-B0511CD5E916}DESKTOP-RSBN11D\SQLEXPRESS.BankITI;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

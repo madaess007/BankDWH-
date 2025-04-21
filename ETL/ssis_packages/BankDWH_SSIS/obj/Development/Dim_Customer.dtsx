@@ -1,0 +1,3169 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/11/2025 7:59:20 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-RSBN11D"
+  DTS:CreatorName="DESKTOP-RSBN11D\Pc Shop"
+  DTS:DTSID="{0B2E5AEF-A8AB-4AEA-A88C-12CA79C137C7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{4854193C-2C46-400E-9244-6601113979BD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-RSBN11D\SQLEXPRESS.Union_Bank]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{11F492EC-A236-492F-A59C-449D255253E2}"
+      DTS:ObjectName="DESKTOP-RSBN11D\SQLEXPRESS.Union_Bank">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-RSBN11D\SQLEXPRESS;Initial Catalog=Union_Bank;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{11F492EC-A236-492F-A59C-449D255253E2}DESKTOP-RSBN11D\SQLEXPRESS.Union_Bank;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Customer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6A5FA639-0026-4824-828C-7C6EEF0DA716}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Customer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Customer\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Customer\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbDate"
+                      description="End_Date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Customer\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Customer\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output].Columns[St_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output].Columns[St_Date]"
+                      name="St_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output].Columns[Is_Current]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output].Columns[Is_Current]"
+                      name="Is_Current"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Customer\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\Dim_Customer_Sources"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Dim_Customer_Sources"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+c.Customer_ID, c.[First Name], c.[Last Name],
+c.Email, c.BD, c.State, c.Gender,
+cph.[Mobile Number],
+a.[Account Number], a.[Account Type], a.Balance, a.Status, a.[Branch ID], 
+ca.CardNumber, ca.Card_Type, ca.Card_Status, ca.Expiry_Date,ca.CSV
+
+FROM [Union_Bank].[dbo].Customer as c
+LEFT JOIN [Union_Bank].[dbo].Customer_Phones as cph
+ON c.Customer_ID = cph.Customer_ID
+LEFT JOIN [Union_Bank].[dbo].Account as a
+ON a.[Customer ID] = c.Customer_ID
+LEFT JOIN [Union_Bank].[dbo].Card as ca
+ON ca.Account_Number = a.[Account Number]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Customer\Dim_Customer_Sources.Connections[OleDbConnection]"
+                  connectionManagerID="{A1EBC6F8-DE09-4E88-A4E7-A9047AC95F36}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.Union_Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Customer_ID]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]"
+                      name="Customer_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[First Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[First Name]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[First Name]"
+                      name="First Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Last Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Last Name]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Last Name]"
+                      name="Last Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[BD]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[BD]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[BD]"
+                      name="BD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Mobile Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Mobile Number]"
+                      length="15"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Mobile Number]"
+                      name="Mobile Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Account Number]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]"
+                      name="Account Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Account Type]"
+                      length="255"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Type]"
+                      name="Account Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Balance]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Balance]"
+                      name="Balance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="255"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Branch ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Branch ID]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Branch ID]"
+                      name="Branch ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                      name="CardNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Card_Type]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Type]"
+                      name="Card_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Card_Status]"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Status]"
+                      name="Card_Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Expiry_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Expiry_Date]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Expiry_Date]"
+                      name="Expiry_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CSV]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[CSV]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CSV]"
+                      name="CSV"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Customer_ID]"
+                      dataType="i4"
+                      name="Customer_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[First Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="First Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Last Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Last Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[BD]"
+                      dataType="dbDate"
+                      name="BD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Mobile Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Mobile Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Account Number]"
+                      dataType="i4"
+                      name="Account Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Account Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Account Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
+                      dataType="r8"
+                      name="Balance" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Branch ID]"
+                      dataType="i4"
+                      name="Branch ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CardNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Card_Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Card_Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Card_Status]"
+                      dataType="wstr"
+                      length="50"
+                      name="Card_Status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[Expiry_Date]"
+                      dataType="dbDate"
+                      name="Expiry_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].ExternalColumns[CSV]"
+                      dataType="i4"
+                      name="CSV" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Customer_ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Customer_ID]"
+                      name="Customer_ID" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[First Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[First Name]"
+                      name="First Name" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Last Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Last Name]"
+                      name="Last Name" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[BD]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[BD]"
+                      name="BD" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Mobile Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Mobile Number]"
+                      name="Mobile Number" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Account Number]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Account Number]"
+                      name="Account Number" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Account Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Account Type]"
+                      name="Account Type" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Balance]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Balance]"
+                      name="Balance" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Branch ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Branch ID]"
+                      name="Branch ID" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                      name="CardNumber" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Card_Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Card_Type]"
+                      name="Card_Type" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Card_Status]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Card_Status]"
+                      name="Card_Status" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Expiry_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[Expiry_Date]"
+                      name="Expiry_Date" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[CSV]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[CSV]"
+                      name="CSV" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Customer\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Customer_ID]"
+                      cachedDataType="i4"
+                      cachedName="Customer_ID"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusID_BK]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Customer_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[First Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="First Name"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusFn]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[First Name]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Last Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Last Name"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusLn]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Last Name]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusEmail]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[BD]"
+                      cachedDataType="dbDate"
+                      cachedName="BD"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusBD]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[BD]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusState]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[State]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusGender]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Mobile Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Mobile Number"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusMobNo]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Mobile Number]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Account Number]"
+                      cachedDataType="i4"
+                      cachedName="Account Number"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccNo_BK]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Number]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Account Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Account Type"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_type]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Type]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Balance]"
+                      cachedDataType="r8"
+                      cachedName="Balance"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_Balance]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Balance]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_status]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Branch ID]"
+                      cachedDataType="i4"
+                      cachedName="Branch ID"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_BranchID]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Branch ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[CardNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CardNumber"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CardNo_BK]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CardNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Card_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Type"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Card_Type]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Type]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Card_Status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Status"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Card_Status]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Status]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Expiry_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Expiry_Date"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Card_ExpD]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Expiry_Date]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[CSV]"
+                      cachedDataType="i4"
+                      cachedName="CSV"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSV]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CSV]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[St_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="St_Date"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[St_Date]"
+                      lineageId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output].Columns[St_Date]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSC]"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[SSC]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[Is_Current]"
+                      cachedDataType="ui1"
+                      cachedName="Is_Current"
+                      externalMetadataColumnId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Is_Current]"
+                      lineageId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output].Columns[Is_Current]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cus_PK_SK]"
+                      dataType="i4"
+                      name="Cus_PK_SK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusID_BK]"
+                      dataType="i4"
+                      name="CusID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusFn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusFn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusLn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusLn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusEmail]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusEmail" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusBD]"
+                      dataType="dbDate"
+                      name="CusBD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusState" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusGender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusGender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CusMobNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CusMobNo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccNo_BK]"
+                      dataType="i4"
+                      name="AccNo_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Acc_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_Balance]"
+                      dataType="r8"
+                      name="Acc_Balance" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Acc_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acc_BranchID]"
+                      dataType="i4"
+                      name="Acc_BranchID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CardNo_BK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CardNo_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Card_Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Card_Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Card_Status]"
+                      dataType="wstr"
+                      length="50"
+                      name="Card_Status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Card_ExpD]"
+                      dataType="dbDate"
+                      name="Card_ExpD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSV]"
+                      dataType="i4"
+                      name="CSV" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[St_Date]"
+                      dataType="dbDate"
+                      name="St_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbDate"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Is_Current]"
+                      dataType="ui1"
+                      name="Is_Current" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSC]"
+                      dataType="i4"
+                      name="SSC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Customer] SET [End_Date] = ?, Is_Current = 0 
+WHERE [AccNo_BK] = ? AND [CardNo_BK] = ? AND [CusID_BK] = ? AND [End_Date] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Customer\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].Columns[Account Number]"
+                      cachedDataType="i4"
+                      cachedName="Account Number"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].Columns[CardNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CardNumber"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].Columns[Customer_ID]"
+                      cachedDataType="i4"
+                      cachedName="Customer_ID"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].Columns[End_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Output].Columns[End_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Customer] SET [Acc_BranchID] = ?,[Acc_status] = ?,[CSV] = ? WHERE [AccNo_BK] = ? AND [CardNo_BK] = ? AND [CusID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Customer\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Branch ID]"
+                      cachedDataType="i4"
+                      cachedName="Branch ID"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Branch ID]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Account Number]"
+                      cachedDataType="i4"
+                      cachedName="Account Number"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CardNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CardNumber"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CSV]"
+                      cachedDataType="i4"
+                      cachedName="CSV"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CSV]" />
+                    <inputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Customer_ID]"
+                      cachedDataType="i4"
+                      cachedName="Customer_ID"
+                      externalMetadataColumnId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\SCD_Customer"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="SCD_Customer"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Acc_Balance], [Acc_BranchID], [Acc_status], [Acc_type], [AccNo_BK], [Card_ExpD], [Card_Status], [Card_Type], [CardNo_BK], [CSV], [CusBD], [CusEmail], [CusFn], [CusGender], [CusID_BK], [CusLn], [CusMobNo], [CusState], [SSC],[St_Date],[End_Date] FROM [dbo].[Dim_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[St_Date] IS NOT NULL AND [End_Date] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Customer\SCD_Customer.Connections[LookupConnection]"
+                  connectionManagerID="{D626D9A3-A44C-4834-832B-B0511CD5E916}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-RSBN11D_SQLEXPRESS.BankITI]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Balance]"
+                      cachedDataType="r8"
+                      cachedName="Balance"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_Balance]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Balance]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Branch ID]"
+                      cachedDataType="i4"
+                      cachedName="Branch ID"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_BranchID]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Branch ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_status]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Account Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Account Type"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_type]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Account Number]"
+                      cachedDataType="i4"
+                      cachedName="Account Number"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[AccNo_BK]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Expiry_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Expiry_Date"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Card_ExpD]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Expiry_Date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Card_Status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Status"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Card_Status]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Status]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Card_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Type"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Card_Type]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[CardNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CardNumber"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CardNo_BK]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[CSV]"
+                      cachedDataType="i4"
+                      cachedName="CSV"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CSV]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CSV]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[BD]"
+                      cachedDataType="dbDate"
+                      cachedName="BD"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusBD]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[BD]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusEmail]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[First Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="First Name"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusFn]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[First Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusGender]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Customer_ID]"
+                      cachedDataType="i4"
+                      cachedName="Customer_ID"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusID_BK]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Last Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Last Name"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusLn]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Last Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[Mobile Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Mobile Number"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusMobNo]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Mobile Number]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusState]"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      externalMetadataColumnId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[SSC]"
+                      lineageId="Package\DFT_Customer\SSC.Outputs[Derived Column Output].Columns[SSC]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_Balance]"
+                      dataType="r8"
+                      name="Acc_Balance" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_BranchID]"
+                      dataType="i4"
+                      name="Acc_BranchID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Acc_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Acc_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Acc_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[AccNo_BK]"
+                      dataType="i4"
+                      name="AccNo_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Card_ExpD]"
+                      dataType="dbDate"
+                      name="Card_ExpD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Card_Status]"
+                      dataType="wstr"
+                      length="50"
+                      name="Card_Status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[Card_Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Card_Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CardNo_BK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CardNo_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CSV]"
+                      dataType="i4"
+                      name="CSV" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusBD]"
+                      dataType="dbDate"
+                      name="CusBD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusEmail]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusEmail" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusFn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusFn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusGender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusGender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusID_BK]"
+                      dataType="i4"
+                      name="CusID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusLn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusLn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusMobNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CusMobNo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[CusState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CusState" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[SSC]"
+                      dataType="i4"
+                      name="SSC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[St_Date]"
+                      dataType="dbDate"
+                      name="St_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input].ExternalColumns[End_Date]"
+                      dataType="dbDate"
+                      name="End_Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\SCD_Customer.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\SCD_Customer.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\SCD_Customer.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\SCD_Customer.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\SCD_Customer.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\SCD_Customer.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\SSC"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="SSC"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\SSC.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\SSC.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Customer\SSC.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\SSC.Outputs[Derived Column Output].Columns[SSC]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Customer\SSC.Outputs[Derived Column Output].Columns[SSC]"
+                      name="SSC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Customer\SSC.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Customer\SSC.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\SSC.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\SSC.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\SSC.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\SSC.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Customer\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Customer_ID]"
+                      cachedDataType="i4"
+                      cachedName="Customer_ID"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Customer_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[First Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="First Name"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[First Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[First Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Last Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Last Name"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Last Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Last Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Email"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Email]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[BD]"
+                      cachedDataType="dbDate"
+                      cachedName="BD"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[BD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[BD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[State]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Mobile Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Mobile Number"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Mobile Number]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Mobile Number]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Account Number]"
+                      cachedDataType="i4"
+                      cachedName="Account Number"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Number]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Account Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Account Type"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Balance]"
+                      cachedDataType="r8"
+                      cachedName="Balance"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Balance]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Balance]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Branch ID]"
+                      cachedDataType="i4"
+                      cachedName="Branch ID"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Branch ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Branch ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[CardNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CardNumber"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CardNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Card_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Type"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Card_Status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Status"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[Expiry_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Expiry_Date"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Expiry_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Expiry_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[CSV]"
+                      cachedDataType="i4"
+                      cachedName="CSV"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CSV]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CSV]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 1].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      lineageId="Package\DFT_Customer\SSC.Outputs[Derived Column Output].Columns[SSC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[SSC]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Customer_ID]"
+                      cachedDataType="i4"
+                      cachedName="Customer_ID"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Customer_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[First Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="First Name"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[First Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[First Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Last Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Last Name"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Last Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Last Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Email"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Email]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[BD]"
+                      cachedDataType="dbDate"
+                      cachedName="BD"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[BD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[BD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[State]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Mobile Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Mobile Number"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Mobile Number]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Mobile Number]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Account Number]"
+                      cachedDataType="i4"
+                      cachedName="Account Number"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Number]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Account Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Account Type"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Balance]"
+                      cachedDataType="r8"
+                      cachedName="Balance"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Balance]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Balance]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Branch ID]"
+                      cachedDataType="i4"
+                      cachedName="Branch ID"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Branch ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Branch ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[CardNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CardNumber"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CardNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Card_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Type"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Card_Status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Card_Status"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[Expiry_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Expiry_Date"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Expiry_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Expiry_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[CSV]"
+                      cachedDataType="i4"
+                      cachedName="CSV"
+                      lineageId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CSV]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CSV]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Customer\Union All.Inputs[Union All Input 2].Columns[SSC]"
+                      cachedDataType="i4"
+                      cachedName="SSC"
+                      lineageId="Package\DFT_Customer\SSC.Outputs[Derived Column Output].Columns[SSC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[SSC]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_Customer\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Customer_ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Customer_ID]"
+                      name="Customer_ID" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[First Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[First Name]"
+                      name="First Name" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Last Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Last Name]"
+                      name="Last Name" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[BD]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[BD]"
+                      name="BD" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Mobile Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Mobile Number]"
+                      name="Mobile Number" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Number]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Number]"
+                      name="Account Number" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Account Type]"
+                      name="Account Type" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Balance]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Balance]"
+                      name="Balance" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Branch ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Branch ID]"
+                      name="Branch ID" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CardNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CardNumber]"
+                      name="CardNumber" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Type]"
+                      name="Card_Type" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Status]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Card_Status]"
+                      name="Card_Status" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Expiry_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[Expiry_Date]"
+                      name="Expiry_Date" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CSV]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[CSV]"
+                      name="CSV" />
+                    <outputColumn
+                      refId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[SSC]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Customer\Union All.Outputs[Union All Output 1].Columns[SSC]"
+                      name="SSC" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Customer.Paths[Changing Attribute Updates Output]"
+              endId="Package\DFT_Customer\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\DFT_Customer\SCD_Customer.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[Derived Column Output]"
+              endId="Package\DFT_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Customer\SSC.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[Derived Column Output1]"
+              endId="Package\DFT_Customer\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Customer\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[Derived Column Output2]"
+              endId="Package\DFT_Customer\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Customer\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[Historical Attribute Inserts Output]"
+              endId="Package\DFT_Customer\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\DFT_Customer\SCD_Customer.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[New Output]"
+              endId="Package\DFT_Customer\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\DFT_Customer\SCD_Customer.Outputs[New Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[OLE DB Command Output]"
+              endId="Package\DFT_Customer\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\DFT_Customer\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Customer\SSC.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Customer\Dim_Customer_Sources.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Customer.Paths[Union All Output 1]"
+              endId="Package\DFT_Customer\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\DFT_Customer\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\DFT_Customer"
+          TopLeft="220.714286184128,107.058823435571" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Customer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\DFT_Customer\Dim_Customer_Sources"
+          TopLeft="135.7,5.49999999999995" />
+        <NodeLayout
+          Size="96.8,41.6"
+          Id="Package\DFT_Customer\SSC"
+          TopLeft="182.5,107.1" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[OLE DB Source Output]"
+          TopLeft="230.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="148.8,41.6"
+          Id="Package\DFT_Customer\SCD_Customer"
+          TopLeft="156.5,208.7" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[Derived Column Output]"
+          TopLeft="230.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_Customer\Derived Column"
+          TopLeft="17.5,310.3" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[Historical Attribute Inserts Output]"
+          TopLeft="195.7,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-101.8,59.9999999999999"
+              Start="0,0"
+              End="-101.8,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7042253521127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.7042253521127"
+                    Point2="0,20.7042253521127"
+                    Point3="-4,20.7042253521127" />
+                  <mssgle:LineSegment
+                    End="-97.8,20.7042253521127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-97.8,20.7042253521127"
+                    Point2="-101.8,20.7042253521127"
+                    Point3="-101.8,24.7042253521127" />
+                  <mssgle:LineSegment
+                    End="-101.8,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-125.95638671875,25.7042253521127,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DFT_Customer\OLE DB Command"
+          TopLeft="5.50000000000003,411.9" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[Derived Column Output1]"
+          TopLeft="90.9,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DFT_Customer\Union All"
+          TopLeft="170.9,513.5" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[New Output]"
+          TopLeft="230.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.6666666666667,263.2"
+              Start="0,0"
+              End="18.6666666666667,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,151.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,151.842105263158"
+                    Point2="0,155.842105263158"
+                    Point3="4,155.842105263158" />
+                  <mssgle:LineSegment
+                    End="14.6666666666667,155.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.6666666666667,155.842105263158"
+                    Point2="18.6666666666667,155.842105263158"
+                    Point3="18.6666666666667,159.842105263158" />
+                  <mssgle:LineSegment
+                    End="18.6666666666667,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.7580533854167,160.842105263158,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[OLE DB Command Output]"
+          TopLeft="87.9,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="124.333333333333,59.9999999999999"
+              Start="0,0"
+              End="124.333333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="120.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="124.333333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_Customer\Derived Column 1"
+          TopLeft="149.7,615.099999999999" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[Union All Output 1]"
+          TopLeft="230.9,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_Customer\Insert Destination"
+          TopLeft="149.7,716.699999999999" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[Derived Column Output2]"
+          TopLeft="230.9,656.699999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\DFT_Customer\OLE DB Command 1"
+          TopLeft="291.7,310.3" />
+        <EdgeLayout
+          Id="Package\DFT_Customer.Paths[Changing Attribute Updates Output]"
+          TopLeft="266.1,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112.8,59.9999999999999"
+              Start="0,0"
+              End="112.8,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7042253521127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.7042253521127"
+                    Point2="0,20.7042253521127"
+                    Point3="4,20.7042253521127" />
+                  <mssgle:LineSegment
+                    End="108.8,20.7042253521127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108.8,20.7042253521127"
+                    Point2="112.8,20.7042253521127"
+                    Point3="112.8,24.7042253521127" />
+                  <mssgle:LineSegment
+                    End="112.8,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-22.13390625,25.7042253521127,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Customer\Dim_Customer_Sources">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Customer\SCD_Customer">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{D626D9A3-A44C-4834-832B-B0511CD5E916}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Customer]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Balance]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Acc_Balance&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Branch ID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Acc_BranchID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Status]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Acc_status&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Type]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Acc_type&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Account Number]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;AccNo_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Expiry_Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Card_ExpD&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Status]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Card_Status&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Card_Type]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Card_Type&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CardNumber]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CardNo_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[CSV]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CSV&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[BD]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusBD&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Email]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusEmail&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[First Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusFn&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Gender]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusGender&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Customer_ID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusID_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Last Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusLn&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[Mobile Number]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusMobNo&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dim_Customer_Sources.Outputs[OLE DB Source Output].Columns[State]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CusState&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SSC.Outputs[Derived Column Output].Columns[SSC]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;SSC&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;St_Date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;End_Date&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Customer\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
